@@ -34,7 +34,7 @@ async def root(number: str= None):
         number = int(number)
     except ValueError:
         raise HTTPException(status_code=400, detail="Input Error.")
-        return {"errors": True, "number": number}
+        return {"error": True, "number": number}
     def is_prime(number):
         if number <= 1:
             return False
