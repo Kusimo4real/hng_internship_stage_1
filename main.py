@@ -33,7 +33,7 @@ async def root(number: str= None):
     try:
         number = int(number)
     except ValueError:
-        return {"error": True, "number": number}
+        return {"errors": True, "number": number}
     def is_prime(number):
         if number <= 1:
             return False
