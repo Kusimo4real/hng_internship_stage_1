@@ -26,7 +26,10 @@ async def number_api(number:int):
 @app.get("/api/classify-number")
 async def root(number: str= None):
     if number is None:
-        return {"number": number, "error": True}
+        return {
+                "number": number,
+                "error": True
+                }
     try:
         number = int(number)
     except ValueError:
@@ -95,4 +98,5 @@ async def root(number: str= None):
             "is_perfect": is_perfect(number),
             "properties": get_properties(number),
             "digit_sum": digit_sum(number),
-            "fun_fact": number_fact}
+            "fun_fact": number_fact
+            }
