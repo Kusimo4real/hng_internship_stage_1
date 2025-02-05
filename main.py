@@ -27,13 +27,13 @@ async def number_api(number:int):
 async def root(number: str= None):
     if number is None:
         return {
-                "number": number,
-                "error": True
+                "error": True,
+                "number": number
                 }
     try:
         number = int(number)
     except ValueError:
-        return {"number": number, "error": True}
+        return {"error": True, "number": number}
     def is_prime(number):
         if number <= 1:
             return False
