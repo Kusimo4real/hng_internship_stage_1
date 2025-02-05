@@ -33,8 +33,8 @@ async def root(number: str= None):
     try:
         number = int(number)
     except ValueError:
-        return {"error": True, "number": number}
-        #raise HTTPException(status_code=400)
+        #return {"error": True, "number": number}
+        raise HTTPException(status_code=400, {"error": True, "number": number})
 
     def is_prime(number):
         if number <= 1:
