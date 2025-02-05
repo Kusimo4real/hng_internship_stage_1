@@ -39,6 +39,8 @@ async def root(number:str):
 
 
     def is_perfect(number):
+        if number == 0:
+            return False
         sum_1 = 0
         for i in range(1, number):
             if(number % i == 0):
