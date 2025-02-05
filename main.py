@@ -24,7 +24,9 @@ async def number_api(number:int):
 
 
 @app.get("/api/classify-number")
-async def root(number:str):
+async def root(number: str= None):
+    if number is None:
+        return {"number": number, "error": True}
     try:
         number = int(number)
     except ValueError:
