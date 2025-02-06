@@ -24,10 +24,7 @@ async def number_api(number:int):
 
 
 @app.get("/api/classify-number")
-async def root(number: int= None):
-    if number < 0:
-        number = abs(number)
-
+async def root(number: str= None):
     if number is None:
         return {
                 "error": True,
@@ -38,6 +35,9 @@ async def root(number: int= None):
     except ValueError:
         return {"error": True, "number": number}
         raise HTTPException(status_code=400)
+
+    if number < 0:
+        number = abs(number)
 
     def is_prime(number):
         if number <= 1:
