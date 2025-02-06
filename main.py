@@ -24,7 +24,10 @@ async def number_api(number:int):
 
 
 @app.get("/api/classify-number")
-async def root(number: str= None):
+async def root(number: int= None):
+    if number < 0:
+        number = abs(number)
+
     if number is None:
         return {
                 "error": True,
