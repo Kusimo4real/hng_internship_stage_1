@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+#from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import httpx
 
@@ -26,6 +27,7 @@ async def number_api(number:int):
 @app.get("/api/classify-number")
 async def root(number: str= None):
     if number is None:
+        #response.status_code = 400
         return {
                 "error": True,
                 "number": number
@@ -36,7 +38,8 @@ async def root(number: str= None):
         return {"error": True, "number": number}
         raise HTTPException(status_code=400)
 
-    if number < 0:
+    if number < 0 or number >= 0:
+        new_number = number
         number = abs(number)
 
     def is_prime(number):
@@ -98,7 +101,7 @@ async def root(number: str= None):
     number_fact = await number_api(number)
 
     return {
-            "number": number,
+            "number": new_number,
             "is_prime": is_prime(number),
             "is_perfect": is_perfect(number),
             "properties": get_properties(number),
